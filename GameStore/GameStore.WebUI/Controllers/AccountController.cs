@@ -78,7 +78,7 @@ namespace GameStore.WebUI.Controllers
         public ActionResult Logout()
         {
             AuthManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Game"); //Home
         }
     }
     //public class AccountController : Controller

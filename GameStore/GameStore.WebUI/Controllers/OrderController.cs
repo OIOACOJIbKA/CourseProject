@@ -12,14 +12,20 @@ namespace GameStore.WebUI.Controllers
     public class OrderController : Controller
     {
         private IOrderRepository repository;
+        private ICompositionOrderRepository compositionOrderRepository;
         // GET: Order
-        public OrderController(IOrderRepository repo)
+        public OrderController(IOrderRepository repo, ICompositionOrderRepository compositionOrderRepo)
         {
             repository = repo;
+            compositionOrderRepository = compositionOrderRepo;
         }
         public ViewResult Index()
         {
             return View(repository.Orders);
+        }
+        public ViewResult OrderComposition()
+        {
+            return View(compositionOrderRepository.CompositionOrders);
         }
         [HttpPost]
         public ViewResult Index(Order order)
@@ -29,7 +35,11 @@ namespace GameStore.WebUI.Controllers
             if (ModelState.IsValid)
             {
             }
-            return View("In");
+            return View("Index");
+        }
+        public ActionResult Edit(Order order)
+        {
+            return View(order);
         }
     }
 }
