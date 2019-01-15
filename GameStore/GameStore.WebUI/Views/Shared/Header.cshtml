@@ -2,7 +2,7 @@
 <div class="navbar navbar-inverse" role="navigation">
 
     <table>
-        <tr>            
+        <tr>
             <td>
                 @using (Html.BeginForm("List", "Game"))
                 {
@@ -35,6 +35,7 @@
                            value="Продажи" />
                 }
             </td>
+            @*@{if (User.IsInRole("Admin")) { bool flag = true; } }*@
             <td>
                 @using (Html.BeginForm("Users", "Admin"))
                 {
@@ -52,8 +53,8 @@
                 }
             </td>
             @*@{string userName = PageContext.Page.User.Identity.Name;
-                    string[] role = Roles.GetRolesForUser();}
-                @{bool nullName = userName == ""; }*@
+            string[] role = Roles.GetRolesForUser();}
+        @{bool nullName = userName == ""; }*@
             @{bool nullName = PageContext.Page.User.Identity.Name == ""; }
             @if (nullName)
             {

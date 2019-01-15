@@ -12,7 +12,6 @@ using System.Collections.Generic;
 
 namespace GameStore.WebUI.Controllers
 {
-    //[Authorize(Roles ="Admin")]
     //[Authorize(Roles = "Admin, Manager")]
     public class AdminController : Controller
     {
@@ -59,9 +58,7 @@ namespace GameStore.WebUI.Controllers
         [Authorize(Roles = "Admin, Manager")]
         public ViewResult Create()
         {
-            //Game g = new Game();
-            //g.Name = "lll";
-            return View("Edit",  new Game()); //g);
+            return View("Edit",  new Game()); 
         }
         [HttpPost]
         public ActionResult Delete(int gameId)
@@ -74,15 +71,7 @@ namespace GameStore.WebUI.Controllers
             }
             return RedirectToAction("Index");
         }
-        //[Authorize]
-        //public ActionResult Users()
-        //{
-        //    Dictionary<string, object> data = new Dictionary<string, object>();
-        //    data.Add("Ключ", "Значение");
 
-        //    return View(data);
-        //}
-        //[Authorize]
         [Authorize(Roles = "Admin")]
         public ActionResult Users()
         {

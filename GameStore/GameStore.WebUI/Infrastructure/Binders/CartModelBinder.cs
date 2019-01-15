@@ -26,7 +26,6 @@ namespace GameStore.WebUI.Infrastructure.Binders
                     controllerContext.HttpContext.Session[sessionKey] = cart;
                 }
             }
-
             // Возвратить объект Cart
             return cart;
         }

@@ -37,9 +37,7 @@ namespace GameStore.WebUI.Infrastructure
                 AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
-
             return manager;
         }
-
     }
 }

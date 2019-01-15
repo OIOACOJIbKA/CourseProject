@@ -8,7 +8,6 @@ namespace GameStore.WebUI.Models
 {
     public class AppUser : IdentityUser
     {
-
         // Здесь будут указываться дополнительные свойства
     }
 }

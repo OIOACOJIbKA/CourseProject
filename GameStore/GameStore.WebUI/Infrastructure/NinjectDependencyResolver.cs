@@ -36,26 +36,7 @@ namespace GameStore.WebUI.Infrastructure
         {
             kernel.Bind<IGameRepository>().To<EFGameRepository>();
             kernel.Bind<ICompositionOrderRepository>().To<EFCompositionOrderRepository>();
-            kernel.Bind<IOrderRepository>().To<EFOrderRepository>();
-
-            //EmailSettings emailSettings = new EmailSettings
-            //{
-            //    WriteAsFile = bool.Parse(ConfigurationManager
-            //        .AppSettings["Email.WriteAsFile"] ?? "false")
-            //};
-
-            //kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-            //    .WithConstructorArgument("settings", emailSettings);
-            //kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
-            /*
-            Mock<IGameRepository> mock = new Mock<IGameRepository>();
-            mock.Setup(m => m.Games).Returns(new List<Game>
-            {
-                new Game { Name = "SimCity", Price = 1499 },
-                new Game { Name = "TITANFALL", Price=2299 },
-                new Game { Name = "Battlefield 4", Price=899.4M }
-            });
-            kernel.Bind<IGameRepository>().ToConstant(mock.Object);*/
+            kernel.Bind<IOrderRepository>().To<EFOrderRepository>();           
         }
     }
 }

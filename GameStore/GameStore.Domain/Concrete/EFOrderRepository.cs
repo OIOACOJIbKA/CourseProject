@@ -34,10 +34,7 @@ namespace GameStore.Domain.Concrete
                     dbEntry.Price = order.Price;
                     dbEntry.Status = order.Status;
                     dbEntry.Date = DateTime.Now;
-                    //string userID = order.UserID;
                     dbEntry.UserName = order.UserName;
-                    //dbEntry.UserID = "b2477a44-dcaa-43a0-a723-7554a47a31c8";
-                    //dbEntry.UserID.
                 }
             }
             context.SaveChanges();

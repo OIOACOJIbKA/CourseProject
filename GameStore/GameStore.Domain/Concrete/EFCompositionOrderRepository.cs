@@ -26,8 +26,10 @@ namespace GameStore.Domain.Concrete
                 compOrder.GameID = c.Game.GameId;
                 compOrder.OrderID = order.OrderID;
                 context.CompositionOrders.Add(compOrder);
-            }
-            //else
+            }            
+            context.SaveChanges();
+        }
+        //else
             //{
             //    Order dbEntry = context.Orders.Find(order.OrderID);
             //    if (dbEntry != null)
@@ -41,8 +43,6 @@ namespace GameStore.Domain.Concrete
             //        dbEntry.Date = DateTime.Now;
             //    }
             //}
-            context.SaveChanges();
-        }
         //public CompositionOrder DeleteCompositionOrder(int orderId = 7)
         //{
         //    CompositionOrder dbEntry = context.CompositionOrders.Find(orderId);
