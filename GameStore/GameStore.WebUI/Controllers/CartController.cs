@@ -10,12 +10,14 @@ namespace GameStore.WebUI.Controllers
     public class CartController : Controller
     {
         private IGameRepository repository;
-        private IOrderProcessor orderProcessor;
+        private IOrderRepository orderRepository;
+        private ICompositionOrderRepository compositionOrderRepository;
 
-        public CartController(IGameRepository repo, IOrderProcessor processor)
+        public CartController(IGameRepository repo, IOrderRepository orderRepo, ICompositionOrderRepository compositionOrderRepo)
         {
             repository = repo;
-            orderProcessor = processor;
+            orderRepository = orderRepo;
+            compositionOrderRepository = compositionOrderRepo;
         }
 
         public ViewResult Checkout()
@@ -33,7 +35,19 @@ namespace GameStore.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                orderProcessor.ProcessOrder(cart, order);
+                //orderProcessor.ProcessOrder(cart, order);
+                decimal sum = 0;
+                foreach (var c in cart.Lines)
+                {
+                    sum += c.Game.Price * c.Quantity;
+                }
+                order.Price = sum;// Summary(cart);
+                order.Status = 0;
+                order.Date = System.DateTime.Now;
+
+                orderRepository.CreateOrder(order);
+                compositionOrderRepository.CreateCompositionOrder(order, cart);
+                
                 cart.Clear();
                 return View("Completed");
             }

@@ -10,5 +10,6 @@ namespace GameStore.Domain.Abstract
     public interface ICompositionOrderRepository
     {
         IEnumerable<CompositionOrder> CompositionOrders { get; }
+        void CreateCompositionOrder(Order order, Cart cart);
     }
 }

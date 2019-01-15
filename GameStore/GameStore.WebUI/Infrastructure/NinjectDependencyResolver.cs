@@ -38,14 +38,14 @@ namespace GameStore.WebUI.Infrastructure
             kernel.Bind<ICompositionOrderRepository>().To<EFCompositionOrderRepository>();
             kernel.Bind<IOrderRepository>().To<EFOrderRepository>();
 
-            EmailSettings emailSettings = new EmailSettings
-            {
-                WriteAsFile = bool.Parse(ConfigurationManager
-                    .AppSettings["Email.WriteAsFile"] ?? "false")
-            };
+            //EmailSettings emailSettings = new EmailSettings
+            //{
+            //    WriteAsFile = bool.Parse(ConfigurationManager
+            //        .AppSettings["Email.WriteAsFile"] ?? "false")
+            //};
 
-            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-                .WithConstructorArgument("settings", emailSettings);
+            //kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+            //    .WithConstructorArgument("settings", emailSettings);
             //kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
             /*
             Mock<IGameRepository> mock = new Mock<IGameRepository>();

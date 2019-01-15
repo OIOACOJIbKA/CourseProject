@@ -1,9 +1,11 @@
-﻿using GameStore.Domain.Entities;
+﻿//using GameStore.Domain.Entities;
 
-namespace GameStore.Domain.Abstract
-{
-    public interface IOrderProcessor
-    {
-        void ProcessOrder(Cart cart, Order order);
-    }
-}
+//namespace GameStore.Domain.Abstract
+//{
+//    public interface IOrderProcessor
+//    {
+//        void ProcessOrder(Cart cart, Order order);
+//        void CreateOrder(Order order);
+//        //void CreateOrder(Order order);
+//    }
+//}

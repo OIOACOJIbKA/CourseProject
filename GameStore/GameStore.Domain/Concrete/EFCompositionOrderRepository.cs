@@ -16,5 +16,32 @@ namespace GameStore.Domain.Concrete
         {
             get { return context.CompositionOrders; }
         }
+        public void CreateCompositionOrder(Order order, Cart cart)
+        {
+
+            foreach (var c in cart.Lines)
+            {
+                CompositionOrder compOrder = new CompositionOrder();
+                compOrder.Count = c.Quantity;
+                compOrder.GameID = c.Game.GameId;
+                compOrder.OrderID = order.OrderID;
+                context.CompositionOrders.Add(compOrder);
+            }
+            //else
+            //{
+            //    Order dbEntry = context.Orders.Find(order.OrderID);
+            //    if (dbEntry != null)
+            //    {
+            //        dbEntry.RecipientName = order.RecipientName;
+            //        dbEntry.Adress = order.Adress;
+            //        dbEntry.Town = order.Town;
+            //        dbEntry.Country = order.Country;
+            //        dbEntry.Price = order.Price;
+            //        dbEntry.Status = order.Status;
+            //        dbEntry.Date = DateTime.Now;
+            //    }
+            //}
+            context.SaveChanges();
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace GameStore.Domain.Entities
         //[HiddenInput(DisplayValue = false)]
         public int OrderID { get; set; }
 
-
         [Required(ErrorMessage = "Укажите имя получателя")]
         [Display(Name = "Имя")]
         public string RecipientName { get; set; }
