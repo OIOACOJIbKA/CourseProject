@@ -83,6 +83,17 @@
                     }
                 </td>
                 <td>
+                    @if (PageContext.Page.User.Identity.Name == "")
+                    {
+                        using (Html.BeginForm("CreateUser", "Admin"))
+                        {
+                            <input type="submit"
+                                   class="btn btn-success btn-lg"
+                                   value="Регистрация" />
+                        }
+                    }
+                </td>
+                <td>
                     @if (PageContext.Page.User.Identity.Name != "")
                     {
                         using (Html.BeginForm("Logout", "Account"))
@@ -93,6 +104,7 @@
                         }
                     }
                 </td>
+                <td>@Html.Action("Summary", "Cart")</td>
             </tr>
         </table>
     </div>

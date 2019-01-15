@@ -8,6 +8,7 @@ using GameStore.Domain.Entities;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class SoldGamesController : Controller
     {
         private ICompositionOrderRepository repository;

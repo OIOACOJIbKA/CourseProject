@@ -19,7 +19,7 @@ namespace GameStore.WebUI.Controllers
             orderRepository = orderRepo;
             compositionOrderRepository = compositionOrderRepo;
         }
-
+        [Authorize]
         public ViewResult Checkout()
         {
             return View(new Order());

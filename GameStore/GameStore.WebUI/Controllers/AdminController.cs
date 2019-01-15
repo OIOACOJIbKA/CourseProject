@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace GameStore.WebUI.Controllers
 {
     //[Authorize(Roles ="Admin")]
-    [Authorize(Roles = "Admin, Manager")]
+    //[Authorize(Roles = "Admin, Manager")]
     public class AdminController : Controller
     {
         IGameRepository repository;
@@ -22,18 +22,18 @@ namespace GameStore.WebUI.Controllers
         {
             repository = repo;
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         public ViewResult Index()
         {
             return View(repository.Games);
         }
+        [Authorize(Roles = "Admin, Manager")]
         public ViewResult Edit(int gameId)
         {
             Game game = repository.Games
                 .FirstOrDefault(g => g.GameId == gameId);
             return View(game);
         }
-
         // Перегруженная версия Edit() для сохранения изменений
         [HttpPost]
         public ActionResult Edit(Game game, HttpPostedFileBase image = null)
@@ -56,6 +56,7 @@ namespace GameStore.WebUI.Controllers
                 return View(game);
             }
         }
+        [Authorize(Roles = "Admin, Manager")]
         public ViewResult Create()
         {
             //Game g = new Game();
@@ -87,7 +88,7 @@ namespace GameStore.WebUI.Controllers
         {
             return View(UserManager.Users);
         }
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult CreateUser()
         {
             return View();

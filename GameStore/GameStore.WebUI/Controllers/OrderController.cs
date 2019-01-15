@@ -9,6 +9,7 @@ using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class OrderController : Controller
     {
         private IOrderRepository repository;
