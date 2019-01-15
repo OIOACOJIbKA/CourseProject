@@ -45,7 +45,7 @@ namespace GameStore.WebUI.Controllers
                 order.Status = 0;
                 order.Date = System.DateTime.Now;
 
-                orderRepository.CreateOrder(order);
+                orderRepository.SaveOrder(order);
                 compositionOrderRepository.CreateCompositionOrder(order, cart);
                 
                 cart.Clear();

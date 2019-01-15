@@ -11,8 +11,9 @@ namespace GameStore.Domain.Abstract
     {
         IEnumerable<Order> Orders { get; }
         //void ProcessOrder(Cart cart, Order order);
-        void CreateOrder(Order order);
-        void Status1(Order order);
+        void SaveOrder(Order order);
+        //void EditOrder(Order order);
+        Order DeleteOrder(int orderId);
         //void CreateOrder(Cart cart, Order order);
         //void CreateOrder(String recipientName, String adress, String town, String country);
     }

@@ -31,15 +31,43 @@ namespace GameStore.WebUI.Controllers
         public ViewResult Index(Order order)
         {
             order.Status = 1;
-            repository.Status1(order);
+            repository.SaveOrder(order);
             if (ModelState.IsValid)
             {
             }
             return View("Index");
         }
+        public ViewResult Edit(int orderId)
+        {
+            Order order = repository.Orders
+                .FirstOrDefault(g => g.OrderID == orderId);
+            return View(order);
+        }
+        [HttpPost]
         public ActionResult Edit(Order order)
         {
-            return View(order);
+            if (ModelState.IsValid)
+            {               
+                repository.SaveOrder(order);
+                TempData["message"] = string.Format("Изменения в заказе № \"{0}\" были сохранены", order.OrderID);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // Что-то не так со значениями данных
+                return View(order);
+            }
+        }
+        [HttpPost]
+        public ActionResult Delete(int orderid)
+        {
+            Order deletedOrder = repository.DeleteOrder(orderid);
+            if (deletedOrder != null)
+            {
+                TempData["message"] = string.Format("Заказ № \"{0}\" был удалён",
+                    deletedOrder.OrderID);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

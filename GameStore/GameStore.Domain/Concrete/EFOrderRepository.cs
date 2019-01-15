@@ -17,7 +17,7 @@ namespace GameStore.Domain.Concrete
         {
             get { return context.Orders; }
         }
-        public void CreateOrder(Order order)
+        public void SaveOrder(Order order)
         {
             if (order.OrderID == 0)
                 context.Orders.Add(order);
@@ -37,14 +37,24 @@ namespace GameStore.Domain.Concrete
             }
             context.SaveChanges();
         }
-        public void Status1(Order order)
+        //public void Status1(Order order)
+        //{
+        //    Order dbEntry = context.Orders.Find(order.OrderID);
+        //    if (dbEntry != null)
+        //    {
+        //        dbEntry.Status = 1;
+        //    }
+        //    context.SaveChanges();
+        //}
+        public Order DeleteOrder(int orderId)
         {
-            Order dbEntry = context.Orders.Find(order.OrderID);
+            Order dbEntry = context.Orders.Find(orderId);
             if (dbEntry != null)
             {
-                dbEntry.Status = 1;
+                context.Orders.Remove(dbEntry);
+                context.SaveChanges();
             }
-            context.SaveChanges();
+            return dbEntry;
         }
     }
 }
