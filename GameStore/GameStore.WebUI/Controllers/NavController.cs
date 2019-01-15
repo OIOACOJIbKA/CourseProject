@@ -13,10 +13,7 @@ namespace GameStore.WebUI.Controllers
         {
             repository = repo;
         }
-        public PartialViewResult Footer()
-        {
-            return PartialView("Footer");
-        }
+
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;

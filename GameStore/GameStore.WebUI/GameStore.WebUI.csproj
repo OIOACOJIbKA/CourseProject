@@ -233,7 +233,7 @@
     <Content Include="Views\CompositionOrder\CompositionOrder.cshtml" />
     <Content Include="Views\CompositionOrder\Index.cshtml" />
     <Content Include="Views\SoldGames\Index.cshtml" />
-    <Content Include="Views\Nav\Footer.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
