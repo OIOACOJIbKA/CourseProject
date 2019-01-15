@@ -71,18 +71,15 @@
   <ItemGroup>
     <Compile Include="Abstract\ICompositionOrderRepository.cs" />
     <Compile Include="Abstract\IGameRepository.cs" />
-    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Abstract\IOrderRepository.cs" />
     <Compile Include="Concrete\EFCompositionOrderRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFGameRepository.cs" />
     <Compile Include="Concrete\EFOrderRepository.cs" />
-    <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\CompositionOrder.cs" />
-    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Entities\SoldGames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
