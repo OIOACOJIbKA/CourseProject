@@ -18,11 +18,76 @@
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="#">
-            <span class="hidden-xs">GameStore - магазин компьютерных игр</span>
-            <div class="visible-xs">Game</div>
-            <div class="visible-xs">Store</div>
+            <span class="hidden-xs">GameStore</span>
         </a>
-        @Html.Action("Summary", "Cart")
+        <table class="navbar navbar-inverse">
+            <tr>
+                <td>
+                    @using (Html.BeginForm("List", "Game"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Главная" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Admin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Админ" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Users", "Admin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Пользователи" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Order"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Заказы" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Roleadmin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Роли" />
+                    }
+                </td>
+                @if (PageContext.Page.User.Identity.Name == "")
+                {
+                    <td class="btn btn-success btn-lg">@Html.ActionLink("Войти", "Login", "Account")</td>
+                }
+                <td>
+                    @if (PageContext.Page.User.Identity.Name != "")
+                    {
+                        <div class="navbar-text navbar-right">
+                            <b class="hidden-xs"> Здравствуйте @PageContext.Page.User.Identity.Name!</b>
+                        </div>
+                    }
+                </td>
+                <td>
+                    @if (PageContext.Page.User.Identity.Name != "")
+                    {
+                        using (Html.BeginForm("Logout", "Account"))
+                        {
+                            <input type="submit"
+                                   class="btn btn-success btn-lg"
+                                   value="Выйти" />
+                        }
+                    }
+                </td>
+                <td>@Html.Action("Summary", "Cart")</td>
+            </tr>
+        </table>
     </div>
 
     <div class="visible-xs">

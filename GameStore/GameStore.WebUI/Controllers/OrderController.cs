@@ -27,16 +27,16 @@ namespace GameStore.WebUI.Controllers
         {
             return View(compositionOrderRepository.CompositionOrders);
         }
-        [HttpPost]
-        public ViewResult Index(Order order)
-        {
-            order.Status = 1;
-            repository.SaveOrder(order);
-            if (ModelState.IsValid)
-            {
-            }
-            return View("Index");
-        }
+        //[HttpPost]
+        //public ViewResult Index(Order order)
+        //{
+        //    //order.Status = 1;
+        //    //repository.SaveOrder(order);
+        //    //if (ModelState.IsValid)
+        //    //{
+        //    //}
+        //    return View("Index");
+        //}
         public ViewResult Edit(int orderId)
         {
             Order order = repository.Orders

@@ -18,41 +18,234 @@
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="#">
-            <span class="hidden-xs">GameStore - магазин компьютерных игр</span>
-            <div class="visible-xs">Game</div>
-            <div class="visible-xs">Store</div>
+            <span class="hidden-xs">GameStore</span>
         </a>
-        @*@Html.Action("Summary", "Cart")*@
-        <div class="navbar-right">
-            @Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
-        </div>
-        @if (PageContext.Page.User.Identity.Name != "") { 
-        <div class="navbar-text navbar-right">
-            <b class="hidden-xs"> Здравствуйте @PageContext.Page.User.Identity.Name!</b>            
-        </div>}
+        <table class="navbar navbar-inverse">
+            <tr>
+                <td>
+                    @using (Html.BeginForm("List", "Game"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Главная" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Admin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Админ" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Users", "Admin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Пользователи" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Order"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Заказы" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Index", "Roleadmin"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Роли" />
+                    }
+                </td>
+                @if (PageContext.Page.User.Identity.Name == "")
+                {
+                    <td class="btn btn-success btn-lg">@Html.ActionLink("Войти", "Login", "Account")</td>
+                }
+                <td>
+                    @if (PageContext.Page.User.Identity.Name != "")
+                    {
+                        <div class="navbar-text navbar-right">
+                            <b class="hidden-xs"> Здравствуйте @PageContext.Page.User.Identity.Name!</b>
+                        </div>
+                    }
+                </td>
+                <td>
+                    @if (PageContext.Page.User.Identity.Name != "")
+                    {
+                        using (Html.BeginForm("Logout", "Account"))
+                        {
+                            <input type="submit"
+                                   class="btn btn-success btn-lg"
+                                   value="Выйти" />
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
     </div>
-    @*<div class="navbar-right visible-xs">
-            @Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
-        </div>
-
-        <div class="visible-xs">
-            @html.action("menu", "nav", new { horizontalnav = true })
-        </div>*@
-    @*<div class="row panel">
-            <div id="categories" class="col-sm-3 hidden-xs">
-                @Html.Action("Menu", "Nav")
-            </div>
-            <div class="col-xs-12 col-sm-8">
-                @RenderBody()
-            </div>
-        </div>*@
-    @*<div>
-            @if (TempData["message"] != null)
-            {
-                <div class="alert alert-success">@TempData["message"]</div>
-            }
-        </div>*@
-
     @RenderBody()
 </body>
 </html>
+
+@*@Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })*@
+
+@*<td>
+        @if (PageContext.Page.User.Identity.Name == "")
+        {
+            using (Html.BeginForm("Login", "Account"))
+            {
+                <input type="submit" class="btn btn-success btn-lg" value="Войти" />
+            }
+        }
+    </td>*@
+@*<div class="navbar-right">
+        @Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
+    </div>
+    @if (PageContext.Page.User.Identity.Name != "")
+    {
+        <div class="navbar-text navbar-right">
+            <b class="hidden-xs"> Здравствуйте @PageContext.Page.User.Identity.Name!</b>
+        </div>
+    }*@
+@*<div class="navbar-right visible-xs">
+        @Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="visible-xs">
+        @html.action("menu", "nav", new { horizontalnav = true })
+    </div>*@
+@*<div class="row panel">
+        <div id="categories" class="col-sm-3 hidden-xs">
+            @Html.Action("Menu", "Nav")
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            @RenderBody()
+        </div>
+    </div>*@
+@*<div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+    </div>*@
+
+
+
+@*<header class="bs-docs-nav navbar navbar-static-top" id="top">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="bs-navbar" aria-expanded="false" class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle="collapse" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="../" class="navbar-brand">Bootstrap</a>
+            </div>
+
+            <nav class="collapse navbar-collapse" id="bs-navbar">
+
+                <ul class="nav navbar-nav-inverse">
+                    <li><a href="/home/">Home</a></li>
+                    <li class="active"><a href="/about/">About us</a></li>
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                    <li><a href="/projects/">Projects</a></li>
+                    <li><a href="/careers/">Careers</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+
+        </div>
+    </header>*@
+@*<!-- Классы navbar и navbar-default (базовые классы меню) -->
+    <nav class="navbar navbar-inverse">
+        <!-- Контейнер (определяет ширину Navbar) -->
+        <div class="container-fluid">
+            <!-- Заголовок -->
+            <div class="navbar-header">
+                <!-- Кнопка «Гамбургер» отображается только в мобильном виде (предназначена для открытия основного содержимого Navbar) -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Бренд или название сайта (отображается в левой части меню) -->
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Основная часть меню (может содержать ссылки, формы и другие элементы) -->
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <!-- Содержимое основной части -->
+                <ul id="navbar">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Новости</a></li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                @using (Html.BeginForm("List", "Game"))
+                {
+                    <input type="submit"
+                           class="btn btn-success btn-lg"
+                           value="Домой" />
+                }
+                @using (Html.BeginForm("List", "Game"))
+                {
+                    <input type="submit"
+                           class="btn btn-success btn-lg"
+                           value="Домой" />
+                }
+            </div>
+        </div>*@
+
+<!-- Классы navbar и navbar-default (базовые классы меню) -->
+@*<nav class="navbar navbar-inverse">
+        <!-- Контейнер (определяет ширину Navbar) -->
+        <div class="container-fluid">
+            <!-- Заголовок -->
+            <div class="navbar-header">
+                <!-- Кнопка «Гамбургер» отображается только в мобильном виде (предназначена для открытия основного содержимого Navbar) -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Бренд или название сайта (отображается в левой части меню) -->
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Основная часть меню (может содержать ссылки, формы и другие элементы) -->
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <!-- Содержимое основной части -->
+                <ul id="navbar">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Новости</a></li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                <ul class="btn btn-success btn-lg">
+                    <li>@Html.ActionLink("Главная", "List", "Game")</li>
+                </ul>
+                @using (Html.BeginForm("List", "Game"))
+                {
+                    <input type="submit"
+                           class="btn btn-success btn-lg"
+                           value="Домой" />
+                }
+                @using (Html.BeginForm("List", "Game"))
+                {
+                    <input type="submit"
+                           class="btn btn-success btn-lg"
+                           value="Домой" />
+                }
+            </div>
+        </div>
+    </nav>*@

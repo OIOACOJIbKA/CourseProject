@@ -13,7 +13,7 @@ namespace GameStore.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             if (HttpContext.User.Identity.IsAuthenticated)
@@ -48,11 +48,10 @@ namespace GameStore.WebUI.Controllers
                 {
                     IsPersistent = false
                 }, ident);
-                return Redirect(returnUrl);//ошибка, если ввёл неправильный логин, а потом правильный, то кидает на ошибку
-                                           //ModelState.AddModelError("", returnUrl.ToString());
-                                           //if (returnUrl != null)
-                                           //return Redirect(returnUrl);
-                                           //else { return Redirect("/Admin/Users"); }
+                if (returnUrl == null || returnUrl == "")
+                    return Redirect("/Game/List");
+                else
+                    return Redirect(returnUrl);
             }
             //}
             //else { ModelState.AddModelError("", returnUrl.ToString()); }
