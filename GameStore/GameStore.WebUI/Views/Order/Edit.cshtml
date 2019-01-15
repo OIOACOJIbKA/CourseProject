@@ -14,9 +14,7 @@
         FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="panel-body">
-            @Html.HiddenFor(m => m.OrderID)
-            @*@Html.HiddenFor(x => x.ImageData)
-                @Html.HiddenFor(n => n.ImageMimeType)*@
+            @Html.HiddenFor(m => m.OrderID)            
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 switch (property.PropertyName)

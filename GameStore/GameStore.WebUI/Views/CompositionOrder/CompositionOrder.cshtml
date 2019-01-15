@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "CompositionOrder";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="panel panel-primary">
@@ -26,59 +25,12 @@
             foreach (var compositionOrder in Model)
             {
                 <tr>
-                    @*<td>@Html.ActionLink(order.OrderID.ToString(), "Edit", new { order.OrderID })</td>*@
                     <td>@compositionOrder.CompositionOrderID</td>
                     <td>@compositionOrder.OrderID</td>
                     <td>@compositionOrder.GameID</td>
                     <td>@compositionOrder.Count</td>
-                    @*<td>
-                            @using (Html.BeginForm("Delete", "Order", new { compositionOrder.OrderID }))
-                            {
-                                @Html.ActionLink("Изменить", "Edit", new { compositionOrder.OrderID },
-                                    new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
-                                <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
-                            }
-                        </td>*@
                 </tr>
             }
         }
     </table>
 </div>
-
-@*<div class="panel">
-    <div class="panel-heading">
-        <h3>Редактирование заказа </h3> 
-    </div>
-
-    @using (Html.BeginForm("Edit", "Order",
-        FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class="panel-body">
-            @Html.HiddenFor(m => m.OrderID)
-            @foreach (var property in ViewData.ModelMetadata.Properties)
-            {
-                switch (property.PropertyName)
-                {
-                    case "OrderID":
-                        // Ничего не делать
-                        break;
-                    default:
-                        <div class="form-group">
-                            <label>@(property.DisplayName ?? property.PropertyName)</label>
-                            @Html.TextBox(property.PropertyName, null,
-                                new { @class = "form-control" })
-                            @Html.ValidationMessage(property.PropertyName)
-                        </div>
-                        break;
-                }
-            }
-        </div>
-        <div class="panel-footer">
-            <input type="submit" value="Сохранить" class="btn btn-primary" />
-            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
-            {
-                @class = "btn btn-default"
-            })
-        </div>
-    }
-</div>*@

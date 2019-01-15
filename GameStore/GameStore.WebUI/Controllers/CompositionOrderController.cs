@@ -19,39 +19,27 @@ namespace GameStore.WebUI.Controllers
         }
         public ViewResult Index()
         {
-            return View(repository.CompositionOrders);
+            IEnumerable<CompositionOrder> CompOrders = repository.CompositionOrders;
+            Dictionary<int, int> SoldGames = new Dictionary<int, int>();
+            foreach (var c in CompOrders)
+            {                
+                int count = 0;
+                if (SoldGames.TryGetValue(c.GameID, out count))
+                {
+                    count += c.Count;
+                    SoldGames[c.GameID] = count;
+                }
+            }
+            //.Where(g => g.OrderID != 0)
+            //.OrderBy(g => g.GameID);
+            //.GroupBy(g => g.GameID); //OrderID == orderId);
+            return View(CompOrders);
         }
         public ViewResult CompositionOrder(int orderId)
         {
-            CompositionOrder CompOrder = repository.CompositionOrders
-                .FirstOrDefault(g => g.CompositionOrderID == orderId); //OrderID == orderId);
+            IEnumerable<CompositionOrder> CompOrder = repository.CompositionOrders
+                .Where(g => g.OrderID == orderId); //OrderID == orderId);
             return View(CompOrder);
         }
-        //[HttpPost]
-        //public ActionResult Edit(Order order)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //repository.SaveOrder(order);
-        //        TempData["message"] = string.Format("Изменения в заказе № \"{0}\" были сохранены", order.OrderID);
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        // Что-то не так со значениями данных
-        //        return View(order);
-        //    }
-        //}
-        //public PartialViewResult CompositionOrder()//int orderID)
-        //{
-        //    //CompositionOrder compositionOrder = repository.CompositionOrders;
-        //    //ienumerable<string> categories = repository.compositionorders
-        //    //    .select(compositionorder => compositionorder.orderid)
-        //    //    .distinct()
-        //    //    .orderby(x => x);
-
-        //    return PartialView(/*"CompositionOrder", */repository.CompositionOrders);
-
-        //}
     }
 }

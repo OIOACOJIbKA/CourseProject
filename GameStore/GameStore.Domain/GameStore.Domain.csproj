@@ -83,6 +83,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\CompositionOrder.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
+    <Compile Include="Entities\SoldGames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

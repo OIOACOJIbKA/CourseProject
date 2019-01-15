@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GameStore.Domain.Entities.SoldGames>
+
+@{}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Учетные записи
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Название игры</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Выручка</th>
+        </tr>
+        @{decimal sum = 0; }
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" class="text-center">Нет ни одной учетной записи Bitch</td>
+            </tr>
+        }
+        else
+        {
+            
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.GameName</td>
+                    <td>@user.GamePrice</td>
+                    <td>@user.GameCount</td>
+                    <td>@user.TotalPrice</td>
+                </tr>
+                sum += user.TotalPrice;
+            }
+        }
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Итого:</td>
+                <td class="text-left">
+                    @sum
+                    @*@Model.Cart.ComputeTotalValue().ToString("# руб")*@
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

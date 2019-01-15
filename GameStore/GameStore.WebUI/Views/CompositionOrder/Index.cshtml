@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<GameStore.Domain.Entities.CompositionOrder>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="panel panel-primary">
@@ -11,10 +10,10 @@
             <th>ID</th>
             <th>Заказ №</th>
             <th>ID Игры</th>
-            <th>Количество</th>            
+            <th>Количество</th>
             <th style="min-width: 150px"></th>
         </tr>
-        @if (Model == null || Model.Count() == 0)
+        @if (Model == null)
         {
             <tr>
                 <td colspan="6" class="text-center">Нет заказов</td>
@@ -25,19 +24,10 @@
             foreach (var compositionOrder in Model)
             {
                 <tr>
-                    @*<td>@Html.ActionLink(order.OrderID.ToString(), "Edit", new { order.OrderID })</td>*@
                     <td>@compositionOrder.CompositionOrderID</td>
                     <td>@compositionOrder.OrderID</td>
                     <td>@compositionOrder.GameID</td>
-                    <td>@compositionOrder.Count</td>                    
-                    @*<td>
-                        @using (Html.BeginForm("Delete", "Order", new { compositionOrder.OrderID }))
-                        {
-                            @Html.ActionLink("Изменить", "Edit", new { compositionOrder.OrderID },
-                                new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
-                            <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
-                        }
-                    </td>*@
+                    <td>@compositionOrder.Count</td>
                 </tr>
             }
         }

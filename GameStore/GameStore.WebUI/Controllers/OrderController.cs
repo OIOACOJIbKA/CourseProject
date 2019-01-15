@@ -37,12 +37,12 @@ namespace GameStore.WebUI.Controllers
         //    //}
         //    return View("Index");
         //}
-        public ViewResult CompositionOrder(int orderId)
-        {
-            IEnumerable<CompositionOrder> CompOrder = compositionOrderRepository.CompositionOrders
-                .Where(g => g.OrderID == orderId); //OrderID == orderId);
-            return View(CompOrder);
-        }
+        //public ViewResult CompositionOrder(int orderId)
+        //{
+        //    IEnumerable<CompositionOrder> CompOrder = compositionOrderRepository.CompositionOrders
+        //        .Where(g => g.OrderID == orderId); //OrderID == orderId);
+        //    return View(CompOrder);
+        //}
         public ViewResult Edit(int orderId)
         {
             Order order = repository.Orders

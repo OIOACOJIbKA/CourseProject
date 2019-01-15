@@ -169,6 +169,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CompositionOrderController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\SoldGamesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -231,7 +232,7 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\CompositionOrder\CompositionOrder.cshtml" />
     <Content Include="Views\CompositionOrder\Index.cshtml" />
-    <Content Include="Views\Order\CompositionOrder.cshtml" />
+    <Content Include="Views\SoldGames\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

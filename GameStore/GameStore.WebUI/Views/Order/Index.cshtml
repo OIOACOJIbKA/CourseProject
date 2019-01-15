@@ -1,5 +1,4 @@
-﻿@using GameStore.WebUI.Models
-@model IEnumerable<GameStore.Domain.Entities.Order>
+﻿@model IEnumerable<GameStore.Domain.Entities.Order>
 
 @{
     ViewBag.Title = "Заказы";
@@ -55,7 +54,7 @@
                         {
                             @Html.ActionLink("Изменить", "Edit", new { order.OrderID },
                                 new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
-                            @Html.ActionLink("Состав заказа", "CompositionOrder", new { order.OrderID },
+                            @Html.ActionLink("Состав заказа", "CompositionOrder", "CompositionOrder", new { order.OrderID },
                                 new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
                             <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
                         }

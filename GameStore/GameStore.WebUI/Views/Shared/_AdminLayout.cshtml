@@ -62,6 +62,14 @@
                                value="Роли" />
                     }
                 </td>
+                <td>
+                    @using (Html.BeginForm("Index", "SoldGames"))
+                    {
+                        <input type="submit"
+                               class="btn btn-success btn-lg"
+                               value="Продажи" />
+                    }
+                </td>
                 @if (PageContext.Page.User.Identity.Name == "")
                 {
                     <td class="btn btn-success btn-lg">@Html.ActionLink("Войти", "Login", "Account")</td>
