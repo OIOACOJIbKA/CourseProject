@@ -11,14 +11,14 @@ namespace GameStore.Domain.Concrete
     public class EFOrderRepository : IOrderRepository
     {
         EFDbContext context = new EFDbContext();
-        
+
 
         public IEnumerable<Order> Orders
         {
             get { return context.Orders; }
         }
         public void CreateOrder(Order order)
-        {           
+        {
             if (order.OrderID == 0)
                 context.Orders.Add(order);
             else
@@ -34,6 +34,15 @@ namespace GameStore.Domain.Concrete
                     dbEntry.Status = order.Status;
                     dbEntry.Date = DateTime.Now;
                 }
+            }
+            context.SaveChanges();
+        }
+        public void Status1(Order order)
+        {
+            Order dbEntry = context.Orders.Find(order.OrderID);
+            if (dbEntry != null)
+            {
+                dbEntry.Status = 1;
             }
             context.SaveChanges();
         }

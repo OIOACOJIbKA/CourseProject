@@ -17,9 +17,19 @@ namespace GameStore.WebUI.Controllers
         {
             repository = repo;
         }
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View(repository.Orders);
+        }
+        [HttpPost]
+        public ViewResult Index(Order order)
+        {
+            order.Status = 1;
+            repository.Status1(order);
+            if (ModelState.IsValid)
+            {
+            }
+            return View("In");
         }
     }
 }
