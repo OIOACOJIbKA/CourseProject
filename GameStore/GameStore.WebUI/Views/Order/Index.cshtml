@@ -51,9 +51,11 @@
                     <td>@order.Date</td>
                     <td>@order.Price</td>
                     <td>
-                        @using (Html.BeginForm("Delete", "Order", new {order.OrderID }))
+                        @using (Html.BeginForm("Delete", "Order", new { order.OrderID }))
                         {
                             @Html.ActionLink("Изменить", "Edit", new { order.OrderID },
+                                new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
+                            @Html.ActionLink("Состав заказа", "CompositionOrder", new { order.OrderID },
                                 new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
                             <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
                         }

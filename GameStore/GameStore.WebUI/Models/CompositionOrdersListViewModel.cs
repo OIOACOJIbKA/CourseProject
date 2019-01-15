@@ -7,9 +7,9 @@ using GameStore.Domain.Abstract;
 
 namespace GameStore.WebUI.Models
 {
-    public class CompositionOrderListViewModel
+    public class CompositionOrdersListViewModel
     {
-        public IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<CompositionOrder> compositionOrders { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
 }

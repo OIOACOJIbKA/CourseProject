@@ -1,4 +1,5 @@
 ﻿@model GameStore.Domain.Entities.Order
+@*@model GameStore.Domain.Entities.CompositionOrder*@
 
 @{
     ViewBag.Title = "Edit";
@@ -21,8 +22,6 @@
                 switch (property.PropertyName)
                 {
                     case "OrderID":
-                    case "ImageData":
-                    case "ImageMimeType":
                         // Ничего не делать
                         break;
                     default:
@@ -45,4 +44,3 @@
         </div>
     }
 </div>
-
