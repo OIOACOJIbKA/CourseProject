@@ -15,7 +15,7 @@ namespace GameStore.Domain.Entities
         public string Adress { get; set; }
         public string Town { get; set; }
         public string Country { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int Status { get; set; }
         public DateTime Date { get; set; }
     }

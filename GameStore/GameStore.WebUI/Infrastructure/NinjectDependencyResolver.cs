@@ -35,6 +35,8 @@ namespace GameStore.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IGameRepository>().To<EFGameRepository>();
+            kernel.Bind<ICompositionOrderRepository>().To<EFCompositionOrderRepository>();
+            kernel.Bind<IOrderRepository>().To<EFOrderRepository>();
 
             EmailSettings emailSettings = new EmailSettings
             {

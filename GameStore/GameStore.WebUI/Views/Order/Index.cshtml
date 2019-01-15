@@ -1,0 +1,23 @@
+﻿@using GameStore.WebUI.Models
+@using GameStore.Domain.Entities
+@model IEnumerable<Order>
+
+@{
+    ViewBag.Title = "Заказы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var o in @Model)
+{
+<div>
+    <h3>@o.RecipientName</h3>
+    <p>@o.Adress</p>
+    <p>@o.Town</p>
+    <p>@o.Country</p>
+    <h4>@if (o.Status == 0) { <p>test</p> }</h4>
+    <h4>@o.Date</h4>
+    <h4>@o.Price.ToString("# руб")</h4>
+</div>
+}
+
+@*@model GameStore.Domain.Entities.Order*@
