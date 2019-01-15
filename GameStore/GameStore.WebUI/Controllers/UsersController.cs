@@ -6,15 +6,16 @@ using System.Web.Mvc;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
-        [Authorize]
+        //[Authorize]
         public ActionResult Index()
         {
             return View(GetData("Index"));
         }
 
-        [Authorize(Roles = "Users")]
+        //[Authorize(Roles = "Users")]
         public ActionResult OtherAction()
         {
             return View("Index", GetData("OtherAction"));

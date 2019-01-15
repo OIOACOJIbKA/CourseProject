@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleAdminController : Controller
     {
         private AppUserManager UserManager

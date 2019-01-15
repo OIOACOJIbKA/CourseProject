@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace GameStore.WebUI.Controllers
 {
     //[Authorize(Roles ="Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Manager")]
     public class AdminController : Controller
     {
         IGameRepository repository;
@@ -82,11 +82,12 @@ namespace GameStore.WebUI.Controllers
         //    return View(data);
         //}
         //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Users()
         {
             return View(UserManager.Users);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateUser()
         {
             return View();
