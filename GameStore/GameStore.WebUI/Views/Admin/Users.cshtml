@@ -9,7 +9,7 @@
     <div class="panel-heading">
         Учетные записи
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped table-condensed table-bordered">
         <tr>
             <th>Id</th>
             <th>Имя</th>
@@ -30,11 +30,11 @@
                 <td>@user.Id</td>
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
-                <td>
+                <td class="text-center">
                     @using (Html.BeginForm("DeleteUser", "Admin", new { id = user.Id }))
                     {
                         @Html.ActionLink("Изменить", "EditUser", new { id = user.Id },
-                            new { @class = "btn btn-primary btn-xs", style = "float: left; margin-right: 10px" })
+                            new { @class = "btn btn-primary btn-xs", style = "float: center; margin-right: 10px" })
                         <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
                     }
                 </td>

@@ -3,24 +3,25 @@
 @{
     ViewBag.Title = "Создание пользователя";
 }
+<div class="form">
+    @Html.ValidationSummary(false)
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Имя</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        </div>
 
-@Html.ValidationSummary(false)
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        <label>Имя</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            <label>Пароль</label>
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Создать</button>
 
-    <div class="form-group">
-        <label>Пароль</label>
-        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-    </div>
-    <button type="submit" class="btn btn-primary">Создать</button>
-
-    @Html.ActionLink("Отмена", "Users", null, new { @class = "btn btn-default" })
-}
+        @Html.ActionLink("Отмена", "Users", null, new { @class = "btn btn-default" })
+    }
+</div>

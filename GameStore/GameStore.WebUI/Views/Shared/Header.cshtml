@@ -1,14 +1,8 @@
 ﻿
 <div class="navbar navbar-inverse" role="navigation">
 
-    <table class="navbar navbar-inverse">
-        <tr>
-            <td>
-                @*<a class="navbar-brand" href="#">
-                    <span class="hidden-xs">GameStore</span>
-                </a>
-                <button class="btn btn-block btn-dartk">@Html.ActionLink("GameStore", "List", "Game")</button>*@
-            </td>
+    <table>
+        <tr>            
             <td>
                 @using (Html.BeginForm("List", "Game"))
                 {
@@ -57,20 +51,18 @@
                            value="Роли" />
                 }
             </td>
+            @*@{string userName = PageContext.Page.User.Identity.Name;
+                    string[] role = Roles.GetRolesForUser();}
+                @{bool nullName = userName == ""; }*@
             @{bool nullName = PageContext.Page.User.Identity.Name == ""; }
             @if (nullName)
             {
-                @*<div class="navbar-right hidden-xs">
-                        @Html.ActionLink("Корзина", "Index", "Cart",
-                        new { returnUrl = Request.Url.PathAndQuery },
-                        new { @class = "btn btn-success btn-lg navbar-btn" })
-                    </div>*@
                 <td>
-                    <div class="btn btn-success btn-lg">@Html.ActionLink("Войти", "Login", "Account")</div>
+                    <div>
+                        @Html.ActionLink("Войти", "Login", "Account", null,
+                       new {@class = "btn btn-success btn-lg" })
+                    </div>
                 </td>
-                @*<td class="navbar-right hidden-xs">@Html.ActionLink("Войти", "Login", "Account",
-                    new { returnUrl = Request.Url.PathAndQuery },
-                    new { @class = "btn btn-success btn-lg navbar-btn" })</td>*@
             }
             <td>
                 @if (!nullName)
@@ -83,12 +75,10 @@
             <td>
                 @if (nullName)
                 {
-                    using (Html.BeginForm("CreateUser", "Admin"))
-                    {
-                        <input type="submit"
-                               class="btn btn-success btn-lg"
-                               value="Регистрация" />
-                    }
+                    <div>
+                        @Html.ActionLink("Регистрация", "CreateUser", "Admin", null,
+                                    new { @class = "btn btn-success btn-lg" })
+                    </div>
                 }
             </td>
             <td>
