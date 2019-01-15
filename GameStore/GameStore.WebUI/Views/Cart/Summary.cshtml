@@ -6,9 +6,9 @@
     new { @class = "btn btn-default navbar-btn" })
 </div>
 
-<div class="navbar-right visible-xs">
+@*<div class="navbar-right visible-xs">
     @Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
-</div>
+</div>*@
 
 <div class="navbar-right visible-xs">
     <a href=@Url.Action("Index", "Cart", new { returnUrl = Request.Url.PathAndQuery })

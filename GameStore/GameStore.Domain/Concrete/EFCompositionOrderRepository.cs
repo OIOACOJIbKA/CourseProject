@@ -43,5 +43,15 @@ namespace GameStore.Domain.Concrete
             //}
             context.SaveChanges();
         }
+        //public CompositionOrder DeleteCompositionOrder(int orderId = 7)
+        //{
+        //    CompositionOrder dbEntry = context.CompositionOrders.Find(orderId);
+        //    if (dbEntry != null)
+        //    {
+        //        context.CompositionOrders.Remove(dbEntry);
+        //        context.SaveChanges();
+        //    }
+        //    return dbEntry;
+        //}
     }
 }

@@ -11,5 +11,6 @@ namespace GameStore.Domain.Abstract
     {
         IEnumerable<CompositionOrder> CompositionOrders { get; }
         void CreateCompositionOrder(Order order, Cart cart);
+        //CompositionOrder DeleteCompositionOrder(int orderId);
     }
 }

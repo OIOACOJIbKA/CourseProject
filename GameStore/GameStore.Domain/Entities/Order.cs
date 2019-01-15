@@ -28,13 +28,14 @@ namespace GameStore.Domain.Entities
         [Required(ErrorMessage = "Укажите страну")]
         [Display(Name = "Страна")]
         public string Country { get; set; }
-        [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
+        //[Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
+        [Required(ErrorMessage = "Укажите цену заказа")]
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
         [Required(ErrorMessage = "Укажите статус заказа")]
         [Display(Name = "Статус заказа")]
         public int Status { get; set; }
-        [Required(ErrorMessage = "Укажите дату")]
+        [Required(ErrorMessage = "Укажите дату заказа")]
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
     }

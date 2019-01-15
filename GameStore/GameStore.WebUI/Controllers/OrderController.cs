@@ -62,10 +62,12 @@ namespace GameStore.WebUI.Controllers
         public ActionResult Delete(int orderid)
         {
             Order deletedOrder = repository.DeleteOrder(orderid);
+            //CompositionOrder deletedCompositionOrder = compositionOrderRepository.DeleteCompositionOrder(orderid);
             if (deletedOrder != null)
             {
                 TempData["message"] = string.Format("Заказ № \"{0}\" был удалён",
                     deletedOrder.OrderID);
+                
             }
             return RedirectToAction("Index");
         }
