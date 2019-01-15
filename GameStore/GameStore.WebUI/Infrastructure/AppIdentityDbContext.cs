@@ -10,7 +10,7 @@ namespace GameStore.WebUI.Infrastructure
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        public AppIdentityDbContext() : base("name=IdentityDb") { }
+        public AppIdentityDbContext() : base("name=EFDbContext") { }
 
         static AppIdentityDbContext()
         {

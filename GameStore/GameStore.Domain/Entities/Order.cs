@@ -38,5 +38,7 @@ namespace GameStore.Domain.Entities
         [Required(ErrorMessage = "Укажите дату заказа")]
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public string UserName { get; set; }
     }
 }

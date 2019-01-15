@@ -44,6 +44,7 @@ namespace GameStore.WebUI.Controllers
                 order.Price = sum;// Summary(cart);
                 order.Status = 0;
                 order.Date = System.DateTime.Now;
+                order.UserName = User.Identity.Name;
 
                 orderRepository.SaveOrder(order);
                 compositionOrderRepository.CreateCompositionOrder(order, cart);
