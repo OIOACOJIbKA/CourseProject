@@ -28,7 +28,7 @@ namespace GameStore.Domain.Concrete
             emailSettings = settings;
         }
 
-        public void ProcessOrder(Cart cart, ShippingDetails shippingInfo)
+        public void ProcessOrder(Cart cart, Order orderInfo)
         {
             using (var smtpClient = new SmtpClient())
             {
@@ -62,15 +62,15 @@ namespace GameStore.Domain.Concrete
                 body.AppendFormat("Общая стоимость: {0:c}", cart.ComputeTotalValue())
                     .AppendLine("---")
                     .AppendLine("Доставка:")
-                    .AppendLine(shippingInfo.Name)
-                    .AppendLine(shippingInfo.Line1)
-                    .AppendLine(shippingInfo.Line2 ?? "")
-                    .AppendLine(shippingInfo.Line3 ?? "")
-                    .AppendLine(shippingInfo.City)
-                    .AppendLine(shippingInfo.Country)
-                    .AppendLine("---")
-                    .AppendFormat("Подарочная упаковка: {0}",
-                        shippingInfo.GiftWrap ? "Да" : "Нет");
+                    //.AppendLine(orderInfo.Name)
+                    //.AppendLine(orderInfo.Line1)
+                    ////.AppendLine(shippingInfo.Line2 ?? "")
+                    ////.AppendLine(shippingInfo.Line3 ?? "")
+                    //.AppendLine(orderInfo.City)
+                    .AppendLine(orderInfo.Country);
+                //.AppendLine("---")
+                //.AppendFormat("Подарочная упаковка: {0}",
+                //    shippingInfo.GiftWrap ? "Да" : "Нет");
 
                 MailMessage mailMessage = new MailMessage(
                                        emailSettings.MailFromAddress,	// От кого

@@ -198,16 +198,16 @@ namespace GameStore.UnitTests
             Cart cart = new Cart();
 
             // Организация - создание деталей о доставке
-            ShippingDetails shippingDetails = new ShippingDetails();
+            Order order = new Order();
 
             // Организация - создание контроллера
             CartController controller = new CartController(null, mock.Object);
 
             // Действие
-            ViewResult result = controller.Checkout(cart, shippingDetails);
+            ViewResult result = controller.Checkout(cart, order);
 
             // Утверждение — проверка, что заказ не был передан обработчику 
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()),
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<Order>()),
                 Times.Never());
 
             // Утверждение — проверка, что метод вернул стандартное представление 
@@ -217,7 +217,7 @@ namespace GameStore.UnitTests
             Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
         }
         [TestMethod]
-        public void Cannot_Checkout_Invalid_ShippingDetails()
+        public void Cannot_Checkout_Invalid_Order()
         {
             // Организация - создание имитированного обработчика заказов
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
@@ -233,10 +233,10 @@ namespace GameStore.UnitTests
             controller.ModelState.AddModelError("error", "error");
 
             // Действие - попытка перехода к оплате
-            ViewResult result = controller.Checkout(cart, new ShippingDetails());
+            ViewResult result = controller.Checkout(cart, new Order());
 
             // Утверждение - проверка, что заказ не передается обработчику
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()),
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<Order>()),
                 Times.Never());
 
             // Утверждение - проверка, что метод вернул стандартное представление
@@ -259,10 +259,10 @@ namespace GameStore.UnitTests
             CartController controller = new CartController(null, mock.Object);
 
             // Действие - попытка перехода к оплате
-            ViewResult result = controller.Checkout(cart, new ShippingDetails());
+            ViewResult result = controller.Checkout(cart, new Order());
 
             // Утверждение - проверка, что заказ передан обработчику
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()),
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<Order>()),
                 Times.Once());
 
             // Утверждение - проверка, что метод возвращает представление 

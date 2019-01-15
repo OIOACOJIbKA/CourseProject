@@ -20,11 +20,11 @@ namespace GameStore.WebUI.Controllers
 
         public ViewResult Checkout()
         {
-            return View(new ShippingDetails());
+            return View(new Order());
         }
 
         [HttpPost]
-        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        public ViewResult Checkout(Cart cart, Order order)
         {
             if (cart.Lines.Count() == 0)
             {
@@ -33,13 +33,13 @@ namespace GameStore.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                orderProcessor.ProcessOrder(cart, shippingDetails);
+                orderProcessor.ProcessOrder(cart, order);
                 cart.Clear();
                 return View("Completed");
             }
             else
             {
-                return View(shippingDetails);
+                return View(order);
             }
         }
 
